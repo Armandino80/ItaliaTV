@@ -1,0 +1,47 @@
+[
+  {
+    "name": "TV8",
+    "subtitle": "Diretta",
+    "url": "https://www.tv8.it/streaming"
+  },
+  {
+    "name": "Cielo",
+    "subtitle": "Diretta",
+    "url": "https://www.cielotv.it/streaming"
+  },
+  {
+    "name": "RTL 102.5",
+    "subtitle": "Radiovisione",
+    "url": "https://play.rtl.it/live/1/radiovisione/"
+  },
+  {
+    "name": "Radiofreccia",
+    "subtitle": "Radiovisione",
+    "url": "https://play.rtl.it/live/17/radiofreccia-radiovisione/"
+  },
+  {
+    "name": "Radio Zeta",
+    "subtitle": "Radiovisione",
+    "url": "https://play.rtl.it/live/18/radio-zeta-radiovisione/"
+  },
+  {
+    "name": "Radio Italia",
+    "subtitle": "TV / live",
+    "url": "https://www.radioitalia.it/"
+  },
+  {
+    "name": "Play2000",
+    "subtitle": "TV2000",
+    "url": "https://www.play2000.it/"
+  },
+  {
+    "name": "Sportitalia",
+    "subtitle": "Sport live",
+    "url": "https://www.sportitalia.it/"
+  },
+  {
+    "name": "Canale 21",
+    "subtitle": "Campania",
+    "url": "https://www.canale21.it/streaming-canale-21-campania/"
+  }
+]
