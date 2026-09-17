@@ -26,8 +26,9 @@
   },
   {
     "name": "Radio Italia",
-    "subtitle": "TV / live",
-    "url": "https://www.radioitalia.it/"
+    "subtitle": "TV fullscreen",
+    "url": "https://www.radioitalia.it/",
+    "mode": "fullscreen"
   },
   {
     "name": "Play2000",
