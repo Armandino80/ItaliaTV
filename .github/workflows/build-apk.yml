@@ -34,17 +34,28 @@ jobs:
         with:
           gradle-version: '8.10.2'
 
-      - name: Build debug APK
-        run: gradle :app:assembleDebug
+      - name: Restore release keystore
+        env:
+          KEYSTORE_B64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        run: echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/italiatv-release.jks"
+
+      - name: Build signed release APK
+        env:
+          ANDROID_KEYSTORE_FILE: ${{ runner.temp }}/italiatv-release.jks
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+        run: gradle :app:assembleRelease
+
+      - name: Verify APK signature
+        run: "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose --print-certs app/build/outputs/apk/release/app-release.apk
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v7
         with:
-          name: ItaliaTV-debug-apk
-          path: app/build/outputs/apk/debug/app-debug.apk
+          name: ItaliaTV-release-apk
+          path: app/build/outputs/apk/release/app-release.apk
 
       - name: Prepare release APK
-        run: cp app/build/outputs/apk/debug/app-debug.apk ItaliaTV.apk
+        run: cp app/build/outputs/apk/release/app-release.apk ItaliaTV.apk
 
       - name: Publish latest GitHub Release
         env:
@@ -54,5 +65,5 @@ jobs:
           gh release create latest ItaliaTV.apk \
             --target "$GITHUB_SHA" \
             --title "ItaliaTV latest" \
-            --notes "Automatisch gebouwde actuele versie van ItaliaTV voor Android TV / Google TV." \
+            --notes "Vast ondertekende actuele versie van ItaliaTV voor Android TV / Google TV." \
             --latest
