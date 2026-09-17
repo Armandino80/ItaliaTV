@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name": "ItaliaTV Fullscreen Helper",
+  "version": "1.0",
+  "description": "Makes the official broadcaster video player fill the TV screen inside ItaliaTV.",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "fullscreen@italiatv"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["fullscreen.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ]
+}
