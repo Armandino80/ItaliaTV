@@ -1,71 +1,11 @@
 (() => {
   const MARK = 'data-italiatv-fullscreen';
-  const LOADER = 'data-italiatv-loader';
-  const IS_TOP = window.top === window;
-  const FALLBACK_MS = 15000;
   const STOP_SEARCH_MS = 60000;
   const startedAt = Date.now();
-
-  let bootStyle = null;
-  let loader = null;
   let maximized = false;
-  let fallbackReleased = false;
 
   function important(el, prop, value) {
     if (el && el.style) el.style.setProperty(prop, value, 'important');
-  }
-
-  function installBootMask() {
-    if (!IS_TOP || bootStyle) return;
-    bootStyle = document.createElement('style');
-    bootStyle.id = 'italiatv-boot-mask';
-    bootStyle.textContent = `
-      html, body { background:#000 !important; }
-      body > *:not([${LOADER}]) { opacity:0 !important; }
-      [${LOADER}] { opacity:1 !important; visibility:visible !important; }
-    `;
-    (document.documentElement || document).appendChild(bootStyle);
-  }
-
-  function ensureLoader() {
-    if (!IS_TOP || loader || !document.body) return;
-    loader = document.createElement('div');
-    loader.setAttribute(LOADER, '1');
-    loader.textContent = 'ItaliaTV  •  zender laden…';
-    Object.assign(loader.style, {
-      position: 'fixed',
-      inset: '0',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      background: '#000',
-      color: '#fff',
-      fontFamily: 'sans-serif',
-      fontSize: '26px',
-      fontWeight: '600',
-      zIndex: '2147483647'
-    });
-    document.body.appendChild(loader);
-  }
-
-  function releaseBootMask() {
-    if (!IS_TOP) return;
-    fallbackReleased = true;
-    if (bootStyle) {
-      bootStyle.remove();
-      bootStyle = null;
-    }
-    if (loader) {
-      loader.remove();
-      loader = null;
-    }
-  }
-
-  installBootMask();
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', ensureLoader, { once: true });
-  } else {
-    ensureLoader();
   }
 
   function descriptor(el) {
@@ -157,7 +97,6 @@
     if (!target || maximized || target.getAttribute(MARK) === '1') return false;
     maximized = true;
     target.setAttribute(MARK, '1');
-    releaseBootMask();
 
     const path = new Set();
     let node = target;
@@ -234,22 +173,11 @@
   }
 
   const timer = setInterval(() => {
-    ensureLoader();
     tryFullscreen();
-
-    const elapsed = Date.now() - startedAt;
-    if (!maximized && !fallbackReleased && elapsed >= FALLBACK_MS) {
-      releaseBootMask();
-    }
-    if (elapsed >= STOP_SEARCH_MS) {
-      clearInterval(timer);
-    }
+    if (Date.now() - startedAt >= STOP_SEARCH_MS) clearInterval(timer);
   }, 250);
 
-  new MutationObserver(() => {
-    ensureLoader();
-    tryFullscreen();
-  }).observe(document.documentElement, {
+  new MutationObserver(() => tryFullscreen()).observe(document.documentElement, {
     childList: true,
     subtree: true,
     attributes: true,
