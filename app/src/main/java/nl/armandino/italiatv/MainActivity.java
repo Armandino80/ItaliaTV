@@ -54,7 +54,7 @@ public class MainActivity extends Activity {
                 LinearLayout.LayoutParams.WRAP_CONTENT));
 
         TextView subtitle = new TextView(this);
-        subtitle.setText("Webkanalen • kies een tegel en open in je TV-browser");
+        subtitle.setText("Webkanalen • kies een tegel");
         subtitle.setTextColor(Color.rgb(190, 194, 201));
         subtitle.setTextSize(16);
         LinearLayout.LayoutParams subtitleParams = new LinearLayout.LayoutParams(
@@ -138,8 +138,18 @@ public class MainActivity extends Activity {
             v.animate().scaleX(scale).scaleY(scale).setDuration(110).start();
         });
 
-        button.setOnClickListener(v -> openInBrowser(channel.url));
+        button.setOnClickListener(v -> openChannel(channel));
         return button;
+    }
+
+    private void openChannel(Channel channel) {
+        if ("fullscreen".equalsIgnoreCase(channel.mode)) {
+            Intent intent = new Intent(this, FullscreenBrowserActivity.class);
+            intent.putExtra(FullscreenBrowserActivity.EXTRA_URL, channel.url);
+            startActivity(intent);
+            return;
+        }
+        openInBrowser(channel.url);
     }
 
     private void openInBrowser(String url) {
@@ -170,7 +180,8 @@ public class MainActivity extends Activity {
                 channels.add(new Channel(
                         item.getString("name"),
                         item.optString("subtitle", "Open website"),
-                        item.getString("url")
+                        item.getString("url"),
+                        item.optString("mode", "external")
                 ));
             }
         } catch (Exception e) {
@@ -210,11 +221,13 @@ public class MainActivity extends Activity {
         final String name;
         final String subtitle;
         final String url;
+        final String mode;
 
-        Channel(String name, String subtitle, String url) {
+        Channel(String name, String subtitle, String url, String mode) {
             this.name = name;
             this.subtitle = subtitle;
             this.url = url;
+            this.mode = mode;
         }
     }
 }
