@@ -2,47 +2,55 @@
   {
     "name": "TV8",
     "subtitle": "Diretta",
-    "url": "https://www.tv8.it/streaming"
+    "url": "https://www.tv8.it/streaming",
+    "mode": "fullscreen"
   },
   {
     "name": "Cielo",
     "subtitle": "Diretta",
-    "url": "https://www.cielotv.it/streaming"
+    "url": "https://www.cielotv.it/streaming",
+    "mode": "fullscreen"
   },
   {
     "name": "RTL 102.5",
     "subtitle": "Radiovisione",
-    "url": "https://play.rtl.it/live/1/radiovisione/"
+    "url": "https://play.rtl.it/live/1/radiovisione/",
+    "mode": "fullscreen"
   },
   {
     "name": "Radiofreccia",
     "subtitle": "Radiovisione",
-    "url": "https://play.rtl.it/live/17/radiofreccia-radiovisione/"
+    "url": "https://play.rtl.it/live/17/radiofreccia-radiovisione/",
+    "mode": "fullscreen"
   },
   {
     "name": "Radio Zeta",
     "subtitle": "Radiovisione",
-    "url": "https://play.rtl.it/live/18/radio-zeta-radiovisione/"
+    "url": "https://play.rtl.it/live/18/radio-zeta-radiovisione/",
+    "mode": "fullscreen"
   },
   {
     "name": "Radio Italia",
-    "subtitle": "TV fullscreen",
+    "subtitle": "TV",
     "url": "https://www.radioitalia.it/",
     "mode": "fullscreen"
   },
   {
     "name": "Play2000",
     "subtitle": "TV2000",
-    "url": "https://www.play2000.it/"
+    "url": "https://www.play2000.it/",
+    "mode": "fullscreen"
   },
   {
     "name": "Sportitalia",
     "subtitle": "Sport live",
-    "url": "https://www.sportitalia.it/"
+    "url": "https://www.sportitalia.it/",
+    "mode": "fullscreen"
   },
   {
     "name": "Canale 21",
     "subtitle": "Campania",
-    "url": "https://www.canale21.it/streaming-canale-21-campania/"
+    "url": "https://www.canale21.it/streaming-canale-21-campania/",
+    "mode": "fullscreen"
   }
 ]

@@ -54,7 +54,7 @@ public class MainActivity extends Activity {
                 LinearLayout.LayoutParams.WRAP_CONTENT));
 
         TextView subtitle = new TextView(this);
-        subtitle.setText("Webkanalen • kies een tegel");
+        subtitle.setText("Livekanalen • kies een zender");
         subtitle.setTextColor(Color.rgb(190, 194, 201));
         subtitle.setTextSize(16);
         LinearLayout.LayoutParams subtitleParams = new LinearLayout.LayoutParams(
@@ -159,7 +159,7 @@ public class MainActivity extends Activity {
             startActivity(intent);
         } catch (ActivityNotFoundException e) {
             Toast.makeText(this,
-                    "Geen browser gevonden. Installeer bijvoorbeeld TV Bro.",
+                    "Geen browser gevonden.",
                     Toast.LENGTH_LONG).show();
         }
     }
@@ -179,9 +179,9 @@ public class MainActivity extends Activity {
                 JSONObject item = array.getJSONObject(i);
                 channels.add(new Channel(
                         item.getString("name"),
-                        item.optString("subtitle", "Open website"),
+                        item.optString("subtitle", "Live"),
                         item.getString("url"),
-                        item.optString("mode", "external")
+                        item.optString("mode", "fullscreen")
                 ));
             }
         } catch (Exception e) {

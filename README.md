@@ -1,12 +1,14 @@
 # ItaliaTV
 
-ItaliaTV is een lichte Android TV / Google TV launcher voor Italiaanse tv- en radiostreams waarvoor geen goede native TV-app beschikbaar is.
+ItaliaTV is een Android TV / Google TV launcher voor officiële Italiaanse tv- en radiostreams waarvoor geen goede native TV-app beschikbaar is.
 
-De app is bedoeld voor bediening met een afstandsbediening op apparaten zoals de STRONG LEAP-S3+V2. Een tegel opent de officiële website in een geïnstalleerde browser (bij voorkeur TV Bro). Er wordt bewust geen WebView gebruikt, zodat DRM, cookies, fullscreen-video en websitewijzigingen door de externe browser worden afgehandeld.
+De app is bedoeld voor bediening met een afstandsbediening op apparaten zoals de STRONG LEAP-S3+V2. Een tegel opent de officiële broadcasterpagina intern in GeckoView. Tijdens het laden blijft het scherm zwart; zodra de officiële videoplayer wordt gevonden, wordt die schermvullend gemaakt. Als na ongeveer 15 seconden geen geschikte player wordt gevonden, verschijnt de gewone website als fallback.
+
+ItaliaTV haalt geen losse stream-URL's uit websites, restreamt niets en omzeilt geen DRM of authenticatie. De officiële website en player blijven de bron van de video.
 
 ## Kanalen
 
-De eerste versie bevat tegels voor:
+De huidige versie bevat tegels voor:
 
 - TV8
 - Cielo
@@ -26,12 +28,16 @@ De lijst staat in `app/src/main/assets/channels.json` en kan later eenvoudig wor
 - landscape-interface
 - D-pad/focusbediening
 - geselecteerde tegel wordt visueel vergroot
-- opent URL's via een externe browser
+- standaard interne fullscreen-modus via GeckoView
+- zwarte laadweergave zodat de website-interface niet eerst in beeld flitst
+- automatische detectie van video, playercontainer of video-iframe
+- fallback naar de gewone officiële website als geen player wordt gevonden
+- Back keert terug naar ItaliaTV
 - geen accounts, analytics of advertenties in de app zelf
 
 ## Bouwen
 
-De repository bevat een GitHub Actions-workflow die een debug-APK bouwt. Na een succesvolle workflow-run is de APK beschikbaar als artifact.
+De repository bevat een GitHub Actions-workflow die een debug-APK bouwt en als `latest` GitHub Release publiceert.
 
 Lokaal bouwen kan met een geschikte Android SDK/JDK via:
 
@@ -41,4 +47,4 @@ Lokaal bouwen kan met een geschikte Android SDK/JDK via:
 
 ## Installatie
 
-Installeer de gebouwde APK via sideloading op Android TV / Google TV. Installeer daarnaast een TV-browser, bij voorkeur TV Bro, zodat de webtegels prettig met de afstandsbediening werken.
+Installeer de gebouwde APK via sideloading op Android TV / Google TV. Een aparte TV-browser is voor de normale kanaaltegels niet meer nodig.
