@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace 'nl.armandino.italiatv'
-    compileSdk 37
+    compileSdk 35
 
     defaultConfig {
         applicationId "nl.armandino.italiatv"
@@ -23,7 +23,7 @@ android {
 }
 
 dependencies {
-    // Target the 32-bit ARM userspace commonly used by S905Y4 Google TV boxes.
-    // Keeping the ABI-specific GeckoView avoids shipping an unnecessarily huge universal browser engine.
-    implementation "org.mozilla.geckoview:geckoview-armeabi-v7a:155.0.20260903215306"
+    // Stable GeckoView release compatible with the Android 35 build toolchain.
+    // Use the 32-bit ARM build for the STRONG LEAP-S3+V2 class of Google TV boxes.
+    implementation "org.mozilla.geckoview:geckoview-armeabi-v7a:137.0.20250414091429"
 }
