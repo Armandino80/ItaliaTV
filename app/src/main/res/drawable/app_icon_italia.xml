@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Dark launcher tile -->
+    <path
+        android:fillColor="#101820"
+        android:pathData="M14,4 H94 C99.52,4 104,8.48 104,14 V94 C104,99.52 99.52,104 94,104 H14 C8.48,104 4,99.52 4,94 V14 C4,8.48 8.48,4 14,4 Z" />
+
+    <!-- TV antenna -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#F5F7FA"
+        android:strokeWidth="5"
+        android:strokeLineCap="round"
+        android:pathData="M44,19 L34,9 M64,19 L74,9" />
+
+    <!-- TV body -->
+    <path
+        android:fillColor="#F5F7FA"
+        android:pathData="M20,20 H88 C92.42,20 96,23.58 96,28 V76 C96,80.42 92.42,84 88,84 H20 C15.58,84 12,80.42 12,76 V28 C12,23.58 15.58,20 20,20 Z" />
+
+    <!-- Italian tricolore screen -->
+    <path android:fillColor="#009246" android:pathData="M19,28 H42 V76 H19 Z" />
+    <path android:fillColor="#FFFFFF" android:pathData="M42,28 H66 V76 H42 Z" />
+    <path android:fillColor="#CE2B37" android:pathData="M66,28 H89 V76 H66 Z" />
+
+    <!-- Dark overlay behind play button -->
+    <path
+        android:fillColor="#D9101820"
+        android:pathData="M54,37 C63.39,37 71,44.61 71,54 C71,63.39 63.39,71 54,71 C44.61,71 37,63.39 37,54 C37,44.61 44.61,37 54,37 Z" />
+
+    <!-- Play symbol -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M50,44 L50,64 L65,54 Z" />
+
+    <!-- TV feet -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#F5F7FA"
+        android:strokeWidth="5"
+        android:strokeLineCap="round"
+        android:pathData="M34,84 L29,95 M74,84 L79,95" />
+</vector>
